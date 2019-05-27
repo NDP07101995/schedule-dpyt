@@ -1,15 +1,16 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Playlist = sequelize.define('Playlist', {
+
+module.exports = function (sequelize, DataTypes) {
+  var Playlist = sequelize.define('Playlist', {
     uid: DataTypes.STRING,
     title: DataTypes.TEXT,
-    description:{
+    description: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: true
     },
-    keywords:{
+    keywords: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: true
     },
     gl: DataTypes.STRING,
     hl: DataTypes.STRING,
@@ -69,12 +70,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: true
   });
-  Playlist.associate = function(models) {
+
+  Playlist.associate = function (models) {
     Playlist.hasOne(models.Channel, {
       foreignKey: 'id',
-      targetKey: 'channel_id',
+      targetKey: 'channel_id'
     });
-    
   };
+
   return Playlist;
 };

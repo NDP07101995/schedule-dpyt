@@ -40,21 +40,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
-    user_id: DataTypes.BIGINT
+    user_id: DataTypes.BIGINT,
+    channel_id: DataTypes.BIGINT,
+    playlist_id: DataTypes.BIGINT
   }, {
     timestamps: true
   });
-  PlaylistItem.associate = function(models) {
 
-    PlaylistItem.belongsTo(models.Channel, {
-      foreignKey: 'channel_id',
-      onDelete: 'CASCADE',
-    });
-
-    PlaylistItem.belongsTo(models.Playlist, {
-      foreignKey: 'playlist_id',
-      onDelete: 'CASCADE',
-    });
-  };
   return PlaylistItem;
 };

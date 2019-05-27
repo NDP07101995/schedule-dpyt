@@ -1,7 +1,11 @@
 'use strict';
-import models from '../models/index';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _index = _interopRequireDefault(require("../models/index"));
+
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: function up(queryInterface, Sequelize) {
     return queryInterface.createTable('PlaylistItems', {
       id: {
         allowNull: false,
@@ -54,7 +58,7 @@ module.exports = {
         type: Sequelize.BIGINT
       },
       channel_id: {
-        type: Sequelize.BIGINT,
+        type: Sequelize.BIGINT
       },
       playlist_id: {
         type: Sequelize.BIGINT
@@ -69,7 +73,7 @@ module.exports = {
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
+  down: function down(queryInterface, Sequelize) {
     return queryInterface.dropTable('PlaylistItems');
   }
 };

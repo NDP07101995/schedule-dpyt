@@ -1,6 +1,6 @@
+import winston from 'winston';
+import path from 'path';
 
-const winston = require('winston');
-const path = require('path');
 const logDir = 'logs/';
 const logger = winston.createLogger({
     level: 'info',
@@ -17,18 +17,5 @@ if (process.env.NODE_ENV !== 'production') {
         format: winston.format.simple()
     }));
 }
-const models = require('./src/models/index');
 
-const schedule = require('node-schedule');
-
-const job = schedule.scheduleJob('*/1 * * * *', function(){
-    logger.debug('schedule run');
-});
-
-models.Channel.findAll({
-    attributes: ['id', 'uid', 'title', 'thumbnail']
-})
-    .then(results => logger.debug(results))
-    .catch(err => logger.error(err));
-
-
+export default logger;

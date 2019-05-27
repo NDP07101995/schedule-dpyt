@@ -1,6 +1,7 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Channel = sequelize.define('Channel', {
+
+module.exports = function (sequelize, DataTypes) {
+  var Channel = sequelize.define('Channel', {
     uid: DataTypes.STRING,
     title: DataTypes.STRING,
     thumbnail: DataTypes.STRING,
@@ -19,10 +20,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: true
   });
-  Channel.associate = function(models) {
+
+  Channel.associate = function (models) {
     Channel.hasMany(models.Playlist, {
       foreignKey: 'channel_id'
     });
   };
+
   return Channel;
 };
